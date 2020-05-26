@@ -1,10 +1,15 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+<%- include('includes/navigation.ejs') %>
 <main>
-    {{#if hasProducts }}
+    <% if (prods.length > 0) { %>
         <div class="grid">
-            {{#each prods}}
+            <% for (let product of prods) { %>
                 <div class="card product-item">
                     <header class="card__header">
-                        <h1 class="product__title">{{this.title}}</h1>
+                        <h1 class="product__title"><%= product.title %></h1>
                     </header>
                     <div class="card__image">
                         <img src="https://s2-goods.ozstatic.by/2000/552/826/10/10826552_0.jpg" alt="A Book">
@@ -18,9 +23,10 @@
                         <button class="btn">Add to Cart</button>
                     </div>
                 </div>
-            {{/each}}
+            <% } %>
         </div>
-    {{ else }}
+    <% } else { %>
         <h1>No Products Found!</h1>
-    {{/if}}
+    <% } %>
 </main>
+<%- include('includes/end.ejs') %>
