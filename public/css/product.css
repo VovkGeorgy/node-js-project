@@ -4,18 +4,26 @@
     margin: auto;
 }
 
-button {
+button,
+.btn {
     font: inherit;
     border: 1px solid darkslateblue;
-    background: white;
     border-radius: 3px;
     color: darkslateblue;
     cursor: pointer;
     background: #ffcf33;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    min-width: 60px;
+    padding: 0.2rem 0.3rem;
 }
 
 button:hover,
-button:active {
+button:active,
+.btn:hover,
+.btn:active {
     background-color: darkslateblue;
     color: white;
 }
@@ -51,6 +59,7 @@ main {
     margin: 0.5rem;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
     width: 400px;
+    padding: 1rem;
 }
 
 .card:hover {
@@ -68,5 +77,8 @@ main {
 }
 
 .card__actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
     margin-bottom: 1rem;
 }
