@@ -17,8 +17,9 @@ exports.postAddProduct = (req, res, next) => {
         formData.description,
         formData.price
     );
-    prod.save();
-    res.redirect('/');
+    prod.save()
+        .then(() => res.redirect('/'))
+        .catch(err => console.log(err));
 }
 
 exports.getEditProduct = (req, res, next) => {
@@ -59,8 +60,9 @@ exports.postEditProduct = (req, res, next) => {
         updatedProductData.description,
         updatedProductData.price
     )
-    updatedProduct.save();
-    res.redirect('/admin/products');
+    updatedProduct.save()
+        .then(() => res.redirect('/admin/products'))
+        .catch(err => console.log(err));
 }
 
 exports.postDeleteProduct = (req, res, next) => {

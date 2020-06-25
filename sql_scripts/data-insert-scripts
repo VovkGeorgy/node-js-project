@@ -1,0 +1,2 @@
+INSERT INTO `node-complete`.`products` (`title`, `price`, `description`, `imageUrl`)
+VALUES ('Java book', '12.95', 'Is awesome book!', 'https://s1-goods.ozstatic.by/2000/300/883/10/10883300_0.jpg');
