@@ -10,7 +10,7 @@ exports.getAddProduct = (req, res, next) => {
 
 exports.postAddProduct = (req, res, next) => {
     const formData = req.body;
-    Product.create({
+    req.user.createProduct({
         title: formData.title,
         imageUrl: formData.imageUrl,
         description: formData.description,
@@ -26,38 +26,23 @@ exports.getEditProduct = (req, res, next) => {
         return res.redirect('/');
     }
     const prodId = req.params.productId;
-    Product.findByPk(prodId).then(product => {
-        if (!product) {
-            return res.redirect('/');
-        }
-        res.render('admin/edit-product', {
-            pageTitle: 'Edit Product',
-            path: '/admin/edit-product',
-            editing: editMode,
-            product: product
+    req.user.getProducts({where: {id: prodId}})
+        // Product.findByPk(prodId)
+        .then(([product]) => {
+            if (!product) {
+                return res.redirect('/');
+            }
+            res.render('admin/edit-product', {
+                pageTitle: 'Edit Product',
+                path: '/admin/edit-product',
+                editing: editMode,
+                product: product
+            });
         });
-    });
-}
-
-exports.getProducts = (req, res, next) => {
-    Product.findAll().then(products => {
-        res.render('admin/products', {
-            prods: products,
-            pageTitle: 'Admin products',
-            path: '/admin/products',
-        });
-    });
 }
 
 exports.postEditProduct = (req, res, next) => {
     const newProductData = req.body;
-    const updatedProduct = new Product(
-        newProductData.productId,
-        newProductData.title,
-        newProductData.imageUrl,
-        newProductData.description,
-        newProductData.price
-    );
     Product.findByPk(newProductData.productId)
         .then(prod => {
             prod.title = newProductData.title;
@@ -68,6 +53,17 @@ exports.postEditProduct = (req, res, next) => {
         })
         .then(() => res.redirect('/admin/products'))
         .catch(err => console.log(err));
+}
+
+exports.getProducts = (req, res, next) => {
+    req.user.getProducts()
+        .then(products => {
+            res.render('admin/products', {
+                prods: products,
+                pageTitle: 'Admin products',
+                path: '/admin/products',
+            });
+        });
 }
 
 exports.postDeleteProduct = (req, res, next) => {

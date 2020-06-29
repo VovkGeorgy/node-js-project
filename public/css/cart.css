@@ -1,0 +1,22 @@
+.cart-items-list {
+    list-style: none;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.cart-item__title {
+    width: 30rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cart-item__quantity {
+    width: 12rem;
+}
+
+
+
