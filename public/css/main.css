@@ -166,6 +166,8 @@ main {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
     width: 400px;
     padding: 1rem;
+    overflow: hidden;
+    height: 640px;
 }
 
 .card:hover {
@@ -178,6 +180,7 @@ main {
 }
 
 .card__content {
+    width: 100%;
     text-align: center;
     margin: 1rem 0;
 }
