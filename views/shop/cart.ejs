@@ -19,6 +19,10 @@
                 <hr>
             <% }) %>
         </ul>
+        <form class="cart-item-list__actions" action="/create-order" method="post">
+            <!--            <input type="hidden" value="" name="productId">-->
+            <button class="btn" type="submit">Order now!</button>
+        </form>
     <% } else { %>
         <h1>No Products in Cart!</h1>
     <% } %>

@@ -18,5 +18,8 @@
     width: 12rem;
 }
 
+.cart-item-list__actions {
+    float: right;
+}
 
 
