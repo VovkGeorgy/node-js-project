@@ -16,10 +16,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
-    User.findById('5efc5ef2dde2a9e341deba00').then(user => {
-        req.user = new User(user.name, user.email, user.cart, user._id);
+    // User.findById('5efc5ef2dde2a9e341deba00').then(user => {
+    //     req.user = new User(user.name, user.email, user.cart, user._id);
         next();
-    });
+    // });
 });
 
 app.use('/admin', adminRoutes);

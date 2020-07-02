@@ -1,15 +1,14 @@
 const mongodb = require('mongodb');
-const MongoClient = mongodb.MongoClient;
+const mongoose = require('mongoose');
 
 const uri = "mongodb+srv://node-user:jb02EDbFN5keVfTR@mongotestcluster.wadi6.mongodb.net/shop?retryWrites=true&w=majority";
 
 let _db;
 
 const mongoConnect = (callback) => {
-    MongoClient.connect(uri)
-        .then(client => {
-            console.log('CONNECTED TO MONGODB!');
-            _db = client.db();
+    mongoose.connect(uri)
+        .then(() => {
+            console.log('CONNECTED TO MONGODB BY MONGOOSE!');
             callback();
         })
         .catch(err => console.log(err));
