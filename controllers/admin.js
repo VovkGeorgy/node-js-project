@@ -15,6 +15,7 @@ exports.postAddProduct = (req, res, next) => {
         price: formData.price,
         description: formData.description,
         imageUrl: formData.imageUrl,
+        userId: req.user._id
     });
     product.save().then(result => {
         res.redirect('/')
